@@ -9,6 +9,7 @@
 </head>
 <body>
     <button>Seting a Sketch Book</button>
+    
     <div class="container"></div>
     <div class="container"></div>
     <div class="container"></div>
@@ -25,6 +26,8 @@
     <div class="container"></div>
     <div class="container"></div>
     <div class="container"></div>
+
+    
     
     <script>
         let body = document.querySelector('body');
@@ -36,11 +39,11 @@
                 container.appendChild(div);
 
                 div.addEventListener('mouseover', function() {
-                    div.style.backgroundColor = 'black';
+                    div.style.backgroundColor = getRandomColor();
                 });
 
                 div.addEventListener('mouseout', function() {
-                    div.style.backgroundColor = 'pink';
+                    div.style.backgroundColor = 'white';
                 })
             }
         }
@@ -74,6 +77,15 @@
                 body.appendChild(newContainer);
             }
         })
+
+        function getRandomColor() {
+            let randomInt = () => Math.floor(Math.random()*256);
+            let r = randomInt();
+            let g = randomInt();
+            let b = randomInt();
+
+            return `rgb(${r}, ${g}, ${b})`;
+        }
     </script>
 </body>
 </html>
