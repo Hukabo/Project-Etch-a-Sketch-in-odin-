@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <button>Seting a Sketch Book</button>
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+    
+    <script>
+        let body = document.querySelector('body');
+        let containers = document.querySelectorAll('.container');
+
+        for (container of containers) {
+            for (let i = 0; i < 16; i++) {
+                let div = document.createElement('div');
+                container.appendChild(div);
+
+                div.addEventListener('mouseover', function() {
+                    div.style.backgroundColor = 'black';
+                });
+
+                div.addEventListener('mouseout', function() {
+                    div.style.backgroundColor = 'pink';
+                })
+            }
+        }
+
+        let button = document.querySelector('button');
+        button.addEventListener('click', function() {
+            let num;
+            
+            do {
+                num = prompt('도화지 크기를 정해주세요.(100미만)', 0);
+                if(num === null) return;
+                
+                num = parseInt(num);
+                if(isNaN(num) || num >= 100) {
+                    alert('올바른 숫자를 입력해주세요.');
+                }
+            } while(isNaN(num) || num >= 100);
+
+            while(body.contains(document.querySelector('.container'))) {
+                body.removeChild(document.querySelector('.container'));
+            }
+
+            for (let i = 0; i < num; i++) {
+                let newContainer = document.createElement('div');
+                newContainer.classList.add('container');
+                
+                for (let j = 0; j < num; j++) {
+                    let newDiv = document.createElement('div');
+                    newContainer.appendChild(newDiv);
+                }
+                body.appendChild(newContainer);
+            }
+        })
+    </script>
+</body>
+</html>
