@@ -31,22 +31,21 @@
     
     <script>
         let body = document.querySelector('body');
+
         let containers = document.querySelectorAll('.container');
 
+        
         for (container of containers) {
             for (let i = 0; i < 16; i++) {
                 let div = document.createElement('div');
                 container.appendChild(div);
 
-                div.addEventListener('mouseover', function() {
-                    div.style.backgroundColor = getRandomColor();
-                });
-
-                div.addEventListener('mouseout', function() {
-                    div.style.backgroundColor = 'white';
-                })
+                div.addEventListener('mouseover', mouseoverHandler);
+                div.addEventListener('mouseout', mouseoutHandler);
             }
         }
+        
+        
 
         let button = document.querySelector('button');
         button.addEventListener('click', function() {
@@ -72,11 +71,13 @@
                 
                 for (let j = 0; j < num; j++) {
                     let newDiv = document.createElement('div');
+                    newDiv.addEventListener('mouseover', mouseoverHandler);
+                    newDiv.addEventListener('mouseout', mouseoutHandler);
                     newContainer.appendChild(newDiv);
                 }
                 body.appendChild(newContainer);
-            }
-        })
+            } 
+        });
 
         function getRandomColor() {
             let randomInt = () => Math.floor(Math.random()*256);
@@ -85,6 +86,14 @@
             let b = randomInt();
 
             return `rgb(${r}, ${g}, ${b})`;
+        }
+
+        function mouseoverHandler() {
+            this.style.backgroundColor = getRandomColor();
+        };
+
+        function mouseoutHandler() {
+            this.style.backgroundColor = 'white';
         }
     </script>
 </body>
