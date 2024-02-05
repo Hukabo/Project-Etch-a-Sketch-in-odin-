@@ -10,6 +10,7 @@
 <body>
     <button>Seting a Sketch Book</button>
     
+    <!-- <div class="container"></div>
     <div class="container"></div>
     <div class="container"></div>
     <div class="container"></div>
@@ -24,13 +25,17 @@
     <div class="container"></div>
     <div class="container"></div>
     <div class="container"></div>
-    <div class="container"></div>
-    <div class="container"></div>
+    <div class="container"></div> -->
 
     
     
     <script>
         let body = document.querySelector('body');
+        for (let i = 0; i < 16; i++) {
+            let div = document.createElement('div');
+            div.classList.add('container');
+            body.appendChild(div);
+        }
 
         let containers = document.querySelectorAll('.container');
 
